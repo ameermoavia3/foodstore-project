@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.navbar-brand img {
+  height: 100%;
+  max-height: 50px;
+  width: auto;
+  transform: scale(3.0);
+}
+
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 6px;
+}
+
+
+.navbar .btn {
+  background-color: rgb(255, 56, 56);
+  height: 50px;
+  width: 120px;
+}
+
+
+.nav-link:hover {
+  color: rgb(255, 56, 56);
+
+}
+
+
+.hero-section {
+  background-image: url(images/home-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*  */
+
+.button {
+  border: 2px solid rgb(255, 56, 56);
+  border-radius: 6px;
+  width: 150px;
+  height: 40px;
+  display: block;
+
+  background: linear-gradient(to right, rgb(253, 8, 8) 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+}
+
+.button:hover {
+  background-position: left bottom;
+}
+
+.text {
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+  transition: all .6s ease-out;
+  display: block;
+  color: rgb(253, 8, 8);
+  margin-top: 2px;
+}
+
+.text:hover {
+  color: white;
+}
+
+
+/* image up and down animate */
+
+.floating {
+
+
+  border-radius: 50%;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+/* card img hover */
+
+.custom-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-100%);
+  transition: 0.4s ease-in-out;
+}
+
+.custom-card:hover .card-img-hover{
+  transform: translateY(0);
+}
+
+
+.card-img-hover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* popular foods */
+
+
+.card-img-top {
+  height: 350px; /* ya apni requirement */
+  object-fit: cover; /* image crop hoke fit hogi */
+  width: 100%;
+}
+
+
+

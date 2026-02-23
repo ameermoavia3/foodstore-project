@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-image: url(images/ai-generated-beautuful-fast-food-background-with-copy-space-free-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* .choice-box {
+    margin-top: 200px !important;
+} */
+
+.signup-box {
+    width: 350px;
+    padding: 30px;
+    background: rgba(243, 5, 5, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    
+    color: #fff;
+    
+    
+}
+
+.signup-box h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.signup-box label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+
+.signup-box input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+}
+
+.signup-box button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    background: #d83838;
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    
+}
+
+.signup-box button:hover {
+    background: #00a5d6;
+}
+
+#msg {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
