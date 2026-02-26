@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container bg-body-tertiary py-5">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand">Admin Panel</a>
+                <button class="btn btn-outline-success" type="submit">Logout</button>
+            </div>
+        </nav>
+
+
+        <div class="container  bg-body-tertiary mt-5">
+            <h1>Pending Vender Approvals</h1>
+            <table class="table ">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Signup Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>Role</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+
+                        <td>Signup Date</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+
+                        <td>Status</td>
+                        <td>Doe</td>
+                        <td>@social</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+
+                        <td>Action</td>
+                        <td>Doe</td>
+                        <td>@social</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+        <div class="container mt-5">
+            <h1>Global OverView Data</h1>
+            <div class="card border rounded-2 shadow-sm mb-4" style="width: 68.2rem;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="bg-body-tertiary">Users ID</th>
+                            <th scope="col" class="bg-body-tertiary">Email</th>
+                            <th scope="col" class="bg-body-tertiary">Role</th>
+                            <th scope="col" class="bg-body-tertiary">Verified</th>
+                            <th scope="col" class="bg-body-tertiary">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pendingVendersTableBody">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>@social</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+
+        <script type="module" src="admin.js"></script>
+</body>
+
+</html>

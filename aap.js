@@ -1,19 +1,19 @@
 import { signUpFuction } from "./firebase.js";
 
-const form = document.getElementById("signupForm");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("signupForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-form.addEventListener("submit", (e) => {
+    const email = document.getElementById("email").value;
+    const userName = document.getElementById("userName").value; // fixed
+    const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
 
-  e.preventDefault();   // 🔥 page reload stop
+    console.log("Signup values:", email, password, role);
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const role = document.getElementById("role").value;
-
-  console.log("Signup values:", email, password);
-
-  signUpFuction(email, password, role);
-
+    signUpFuction(userName, email, password, role);
+  });
 });
 
 

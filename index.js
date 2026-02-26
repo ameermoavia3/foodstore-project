@@ -2,7 +2,7 @@ import { auth, logout, checkLoginAndRedirect } from './firebase.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  checkLoginAndRedirect(); // state check on page load
+  checkLoginAndRedirect(); 
 
   const orderBtn = document.getElementById("orderBtn");
   const logoutBtn = document.getElementById("logoutBtn");

@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-import { getFirestore, doc, setDoc ,getDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, collection, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 // Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAU41PWjsFTNzbn2xwrULT4DQMtxzh1P8E",
@@ -24,14 +24,18 @@ const db = getFirestore(app);
 
 
 // Signup function
-function signUpFuction(email, password, role) {
+function signUpFuction(name, email, password, role) {
   createUserWithEmailAndPassword(auth, email, password)
-    .then( async(userCredential) => {
+    .then(async (userCredential) => {
       const user = userCredential.user;
 
+      const isVerified = role === "vender" ? false : true;
+
       await setDoc(doc(db, "users", user.uid), {
+        name : name,
         email: email,
         role: role,
+        isVerified: isVerified
       });
       console.log("Signup successful:", userCredential.user.email);
       window.location.href = "login.html"; // redirect after signup
@@ -43,7 +47,7 @@ function signUpFuction(email, password, role) {
 }
 
 // Login function
- function loginFuction(email, password) {
+function loginFuction(email, password) {
 
   setPersistence(auth, browserLocalPersistence)
     .then(() => {
@@ -60,10 +64,21 @@ function signUpFuction(email, password, role) {
 
         if (role === "user") {
           window.location.href = "ordernow.html";
+        } else if(role === "admin") {
+          window.location.href = "admin.html";
         }
+        
         else if (role === "vender") {
-          window.location.href = "vender.html";   
+          const isVerified = docSnap.data().isVerified;
+
+          if (isVerified === true) {
+            window.location.href = "vender.html";
+          } else {
+            alert("Your account is pending admin verification. Please wait.");
+            auth.signOut();
+          }
         }
+
         else {
           alert("Role not found");
         }
@@ -86,24 +101,29 @@ function signUpFuction(email, password, role) {
 
 function getUserLoggedIn() {
   onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-      // User not logged in → login page
-      window.location.href = "login.html";
-      return;
-    }
 
-    // User is logged in → role check & redirect if needed
-    const docSnap = await getDoc(doc(db, "users", user.uid));
-    if (!docSnap.exists()) return;
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
 
-    const role = docSnap.data().role;
-    if (role === "user" && !window.location.href.includes("ordernow.html")) {
-      window.location.href = "ordernow.html";
-    } 
-    else if (role === "vendor" && !window.location.href.includes("vendor.html")) {
-      window.location.href = "vendor.html";
-    }
-  });
+  const docSnap = await getDoc(doc(db, "users", user.uid));
+
+  if (!docSnap.exists()) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  const role = docSnap.data().role;
+
+  if (role !== "admin") {
+    window.location.href = "login.html";
+    return;
+  }
+
+  
+  console.log("Admin authorized");
+});
 }
 
 
@@ -114,6 +134,18 @@ function getUserLoggedIn() {
 function logout() {
 
   signOut(auth).then(() => {
+    // Sign-out successful.
+
+    window.location = "login.html";
+  }).catch((error) => {
+    // An error happened.
+  });
+}
+
+
+
+function logoutFuction() {
+     signOut(auth).then(() => {
     // Sign-out successful.
 
     window.location = "login.html";
@@ -141,8 +173,22 @@ function checkLoginAndRedirect() {
 }
 
 
-export { signUpFuction, loginFuction, getUserLoggedIn, auth, logout, checkLoginAndRedirect };
 
 
 
+function getUserDetails() {
+  
+
+const q = query(collection(db, "users"), where("state", "==", "CA"));
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  const cities = [];
+  querySnapshot.forEach((doc) => {
+      cities.push(doc.data().name);
+  });
+  console.log("Current cities in CA: ", cities.join(", "));
+});
+}
+
+
+export { signUpFuction, loginFuction, getUserLoggedIn, auth, logout, checkLoginAndRedirect, db, logoutFuction, getUserDetails};
 
